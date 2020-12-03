@@ -15,6 +15,7 @@ const StyledDiv = styled.div`
         width:450px;
         background-color:grey;
     }
+    
 `;
 
 const person =(props)=>{
