@@ -1,21 +1,6 @@
-import './App.css';
 import React,{Component} from 'react';
-import styled from'styled-components';
+import  classs from './App.module.css';
 import Person from './Person/Person'
-
-const StyledButton = styled.button`
-background-color:${props=>props.alt ? 'red':'green'};
-color:white;
-font:inherit;
-border:1px solid red;
-padding:8px;
-cursor:pointer;
-
-&:hover{
-  background-color:${props=>props.alt ? 'brown':'lightgreen'};
-  color:black;
-`;
-
 
  class App extends Component {
  
@@ -66,6 +51,7 @@ cursor:pointer;
         render(){
 
           let persons = null;
+          let butnclass =[classs.button]
 
   if(this.state.personToggle=== true){
 
@@ -92,22 +78,23 @@ cursor:pointer;
     //   backgroundColor:'maroon',
     //   color:'black'
     // }
+    butnclass.push(classs.red);
   }
 
   const classes=[];
   if(this.state.persons.length<=2){
-    classes.push('red')
+    classes.push(classs.red)
   }
   if(this.state.persons.length<=1){
-    classes.push('bold')
+    classes.push(classs.bold)
   }
 
     return (
     
-      <div className="App">
+      <div className={classs.App}>
      <h1 >Hi!! i am react App</h1>
      <p className={classes.join(' ')}>It's Working</p>
-      <StyledButton alt={this.state.personToggle} onClick={this.toogleHandler} >Switch Person</StyledButton>
+      <button className={butnclass.join(' ')} onClick={this.toogleHandler} >Switch Person</button>
       {persons}
     <h1>i will never cheat on me</h1>
     </div>

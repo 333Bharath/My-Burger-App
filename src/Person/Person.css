@@ -1,4 +1,4 @@
-/* .Person{
+.Person{
     color:black;
     width: 40%;
     margin: 16px auto;
@@ -6,8 +6,12 @@
     box-shadow:  0 2px 3px #ccc;
     padding: 16px;
     text-align: center;
-    @media(max-width:500px):{
-        backgroundColor:'grey'
-      
+
+}
+
+@media(max-width:500px){
+    .Person{  
+        background-color:grey;
     }
-} */
+  
+}
