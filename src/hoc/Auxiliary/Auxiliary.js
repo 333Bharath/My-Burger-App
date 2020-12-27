@@ -1,3 +1,2 @@
-const aux = (props)=>(props.children);
-//this is added to check pull
+const aux = (props) => props.children;
 export default aux;
