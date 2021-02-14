@@ -5,8 +5,8 @@ import Button from "../../../UI/Button/Button";
 import Spinner from "../../../UI/Spinner/Spinner";
 import axios from "../../../axios-orders";
 import Input from "../../../UI/Input/Input";
-import withErrorHandler from "../../../hoc/withErrorHandler/withErrorHandler"
-import * as orderActions from "../.././../store/actions/index"
+import withErrorHandler from "../../../hoc/withErrorHandler/withErrorHandler";
+import * as orderActions from "../.././../store/actions/index";
 
 class ContactData extends Component {
   state = {
@@ -48,7 +48,7 @@ class ContactData extends Component {
           required: true,
           minLength: 5,
           maxLength: 5,
-          isNumeric: true
+          isNumeric: true,
         },
         valid: false,
         touched: false,
@@ -75,7 +75,7 @@ class ContactData extends Component {
         value: "",
         validation: {
           required: true,
-          isEmail: true
+          isEmail: true,
         },
         valid: false,
         touched: false,
@@ -108,9 +108,9 @@ class ContactData extends Component {
       ingredients: this.props.ings,
       price: this.props.price,
       orderData: formData,
+      userId: this.props.userId,
     };
-    this.props.onOrderBurger(order)
-   
+    this.props.onOrderBurger(order, this.props.token);
   };
 
   checkInputValidity(value, rules) {
@@ -206,16 +206,20 @@ const mapStateToProps = (state) => {
   return {
     ings: state.burgerBuilder.ingredients,
     price: state.burgerBuilder.totalPrice,
-    loading:state.order.loading
+    loading: state.order.loading,
+    token: state.auth.token,
+    userId: state.auth.userId,
   };
 };
 
-const mapDispatchToProps =(dispatch)=>{
-  return{
-    onOrderBurger:(orderData)=>dispatch(orderActions.purchaseBurger(orderData))
-  }
-}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onOrderBurger: (orderData, token) =>
+      dispatch(orderActions.purchaseBurger(orderData, token)),
+  };
+};
 
-
-
-export default connect(mapStateToProps,mapDispatchToProps)(withErrorHandler(ContactData,axios))
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withErrorHandler(ContactData, axios));
