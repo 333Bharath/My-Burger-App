@@ -26,8 +26,8 @@ describe("<NavigationItems />", () => {
 
   it("should check <NavigationItem link=/logout>Logout</NavigationItem> elements is present", () => {
     wrapper.setProps({ isAuthenticated: true });
-    expect(wrapper.contains(<NavigationItem link="/logout">Logout</NavigationItem>)).toEqual(true)
+    expect(
+      wrapper.contains(<NavigationItem link="/logout">Logout</NavigationItem>)
+    ).toEqual(true);
   });
-
-
 });
